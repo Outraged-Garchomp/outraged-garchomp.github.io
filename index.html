@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <style>
-    .wrapper {
-  height: 100vh;
-  /*This part is important for centering*/
-  display: grid;
-  place-items: left;
-}
-
-.text {
-  width: 26ch;
-  animation: typing 2s steps(26), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: monospace;
-  font-size: 1em;
-}
-
-@keyframes typing {
-  from {
-    width: 0
-  }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
-  }
-}
-    </style>
-  <div class="wrapper">
-    <div class="text">
-      This is a typing demo. <br> newline test.
-    </div>
-   </div>
-    
   </body>
+  <script>
+  // set up text to print, each item in array is new line
+    var aText = new Array(
+    "There are only 10 types of people in the world:", 
+    "Those who understand binary, and those who don't"
+    );
+    var iSpeed = 100; // time delay of print out
+    var iIndex = 0; // start printing array at this posision
+    var iArrLength = aText[0].length; // the length of the text array
+    var iScrollAt = 20; // start scrolling up at this many lines
+
+    var iTextPos = 0; // initialise text position
+    var sContents = ''; // initialise contents variable
+    var iRow; // initialise current row
+
+    function typewriter()
+    {
+     sContents =  ' ';
+     iRow = Math.max(0, iIndex-iScrollAt);
+     var destination = document.getElementById("typedtext");
+
+     while ( iRow < iIndex ) {
+      sContents += aText[iRow++] + '<br />';
+     }
+     destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+     if ( iTextPos++ == iArrLength ) {
+      iTextPos = 0;
+      iIndex++;
+      if ( iIndex != aText.length ) {
+       iArrLength = aText[iIndex].length;
+       setTimeout("typewriter()", 500);
+      }
+     } else {
+      setTimeout("typewriter()", iSpeed);
+     }
+    }
+
+
+    typewriter();
+  </script>
 <html>
