@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <script>
+<script>
 // set up text to print, each item in array is new line
 var aText = new Array(
 "There are only 10 types of people in the world:", 
@@ -24,7 +23,7 @@ function typewriter()
  while ( iRow < iIndex ) {
   sContents += aText[iRow++] + '<br />';
  }
- destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "+";
+ destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "|";
  if ( iTextPos++ == iArrLength ) {
   iTextPos = 0;
   iIndex++;
@@ -40,5 +39,6 @@ function typewriter()
 
 typewriter();
   </script>
+<html>
   <div id="typedtext"></div>
 </html>
