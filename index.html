@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<style>
- body: {background-color: rgb(0,0,0)}
- typedtext: {color: rgb(255, 255, 255)}
-</style>
-<script src="./index.js"></script>
-<html>
-  <div id="typedtext"></div>
-</html>
+<p id="typedtext"></p>
+<script>
+ var i = 0;
+var txt = 'Lorem ipsum typing effect!'; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("typedtext").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
