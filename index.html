@@ -1,26 +1,31 @@
 <!DOCTYPE html>
+ <div id="str"></div>
 <style>
- body: {
-   background-color: rgb(0, 0, 0)
-   color: rgb(255, 255, 255)
- }
- typedtext: {
-    color: rgb(255, 255, 255)
- }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#str {
+   width: 100%;
+   padding: 20px;
+   height: auto;
+   font-family: sans-serif;
+   font-size: 40px;
+   margin: 20px auto;
+   color: #fff;
+   font-weight: bold;
+
+}
 </style>
 <script>
- var i = 0;
-var txt = 'Lorem ipsum typing effect!'; /* The text */
-var speed = 50; /* The speed/duration of the effect in milliseconds */
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("typedtext").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
-typeWriter();
+var string = "CodeHim is one of the BEST developer websites that provide web designers and developers with a simple way to preview and download a variety of free code & scripts.";
+var str = string.split("");
+var el = document.getElementById('str');
+(function animate() {
+str.length > 0 ? el.innerHTML += str.shift() : clearTimeout(running); 
+var running = setTimeout(animate, 90);
+})();
 </script>
-<div id="typedtext"></div>
-
